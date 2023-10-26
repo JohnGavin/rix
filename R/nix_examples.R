@@ -33,6 +33,10 @@ rix(r_ver = "4.2.1",
 file.edit("./default.nix")
 
 "
+# https://nixos.wiki/wiki/Cleaning_the_nix_store
+nix-store --gc
+  nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\w+-system|\{memory|/proc)'
+
 export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
 nix-build --impure
 nix-shell
