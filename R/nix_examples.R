@@ -13,20 +13,20 @@ rix(r_ver = "4.2.1",
     r_pkgs = c("dplyr", "janitor", "AER@1.2-8", 
                "targets", "tarchetypes", "rmarkdown"),
     system_pkgs = c("quarto"),
-    git_pkgs = list(
-      list(package_name = "housing",
-           repo_url = "https://github.com/rap4all/housing/",
-           branch_name = "fusen",
-           commit = "1c860959310b80e67c41f7bbdc3e84cef00df18e"),
-      list(package_name = "fusen",
-           repo_url = "https://github.com/ThinkR-open/fusen",
-           branch_name = "main",
-           commit = "d617172447d2947efb20ad6a4463742b8a5d79dc"),
-      list(package_name = "housing",
-        repo_url = "https://github.com/rap4all/housing/",
-        branch_name = "fusen",
-        commit = "1c860959310b80e67c41f7bbdc3e84cef00df18e")
-    ),
+    # git_pkgs = list(
+    #   list(package_name = "housing",
+    #        repo_url = "https://github.com/rap4all/housing/",
+    #        branch_name = "fusen",
+    #        commit = "1c860959310b80e67c41f7bbdc3e84cef00df18e"),
+    #   list(package_name = "fusen",
+    #        repo_url = "https://github.com/ThinkR-open/fusen",
+    #        branch_name = "main",
+    #        commit = "d617172447d2947efb20ad6a4463742b8a5d79dc"),
+    #   list(package_name = "housing",
+    #     repo_url = "https://github.com/rap4all/housing/",
+    #     branch_name = "fusen",
+    #     commit = "1c860959310b80e67c41f7bbdc3e84cef00df18e")
+    # ),
     ide = c("rstudio", "other", "code")[1],
     project_path = path_default_nix,
     overwrite = TRUE)
@@ -35,7 +35,9 @@ file.edit("./default.nix")
 "
 # https://nixos.wiki/wiki/Cleaning_the_nix_store
 nix-store --gc
-  nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\w+-system|\{memory|/proc)'
+nix-store --verify --check-contents --repair
+
+nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\w+-system|\{memory|/proc)'
 
 export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1
 nix-build --impure
