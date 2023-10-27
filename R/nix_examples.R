@@ -7,7 +7,7 @@ library(rix)
 
 
 # /Users/johngavin/Library/R/arm64/4.3/library 835 packages
-# /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library 29 packages
+# /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library 29 package
 
 
 #  all features of {rix} 
