@@ -25,7 +25,8 @@ library(rix)
 #  all features of {rix} 
 # https://b-rodrigues.github.io/rix/articles/building-reproducible-development-environments-with-rix.html#a-complete-example
 rix(r_ver = "4.3.1",
-    r_pkgs = c("dplyr", "janitor", "AER", # "AER@1.2-8",
+    r_pkgs = c("brms", 
+                "tidyverse", "janitor", "AER", # "AER@1.2-8",
                "targets", "tarchetypes", "rmarkdown"
                ),
     system_pkgs = c("quarto"),
